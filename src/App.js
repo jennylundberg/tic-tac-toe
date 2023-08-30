@@ -75,9 +75,17 @@ export default function Game() {
     } else {
       description = "Go to game start";
     }
+
+    let showTextOrButton;
+    if (currentMove === move) {
+      showTextOrButton = <p>{"You are at move #" + move}</p>
+    } else {
+      showTextOrButton = <button onClick={() => jumpTo(move)}>{description}</button>
+    }
+
     return (
       <li key={move}>
-        <button onClick={() => jumpTo(move)}>{description}</button>
+        {showTextOrButton}
       </li>
     );
   });
@@ -85,7 +93,11 @@ export default function Game() {
   return (
     <div className="game">
       <div className="game-board">
-        <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay}></Board>
+        <Board
+          xIsNext={xIsNext}
+          squares={currentSquares}
+          onPlay={handlePlay}
+        ></Board>
       </div>
       <div className="game-info">
         <ol>{moves}</ol>
