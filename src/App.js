@@ -78,16 +78,14 @@ export default function Game() {
 
     let showTextOrButton;
     if (currentMove === move) {
-      showTextOrButton = <p>{"You are at move #" + move}</p>
+      showTextOrButton = <p>{"You are at move #" + move}</p>;
     } else {
-      showTextOrButton = <button onClick={() => jumpTo(move)}>{description}</button>
+      showTextOrButton = (
+        <button onClick={() => jumpTo(move)}>{description}</button>
+      );
     }
 
-    return (
-      <li key={move}>
-        {showTextOrButton}
-      </li>
-    );
+    return <li key={move}>{showTextOrButton}</li>;
   });
 
   return (
